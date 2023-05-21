@@ -8,56 +8,107 @@ public class PlayerMovement : MonoBehaviour
 {
     public SIDE m_Side = SIDE.Mid;
     float NewXPos = 0f;
-    public bool SwipeLeft;
-    public bool SwipeRight;
+    [HideInInspector]
+    public bool SwipeLeft, SwipeRight, SwipeUp, SwipeDown;
     public float XValue;
     private CharacterController m_char;
     private Animator m_animator;
     private float x;
     public float speedDodge;
+    public float JumpPower = 7f;
+    private float y;
+    public bool inJump;
+    public bool inRoll;
+    public float fwdSpeed = 7f;
+    private float colHeight;
+    private float colCenterY;
 
     void Start()
     {
         m_char = GetComponent<CharacterController>();
+        colHeight = m_char.height;
+        colCenterY = m_char.center.y;
         m_animator = GetComponent<Animator>();
         transform.position = Vector3.zero;
     }
 
     void Update(){
+
         SwipeLeft = Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow);
         SwipeRight = Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow);
-        if (SwipeLeft)
+        SwipeUp = Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow);
+        SwipeDown = Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow);
+
+
+
+        if (SwipeLeft && !inRoll)
         {
             if (m_Side == SIDE.Mid)
             {
                 NewXPos = -XValue;
                 m_Side = SIDE.Left;
-                m_animator.Play("DodgeLeft");
             }
             else if (m_Side == SIDE.Right)
             {
                 NewXPos = 0;
                 m_Side = SIDE.Mid;
-                m_animator.Play("DodgeLeft");
             }
         }
-        else if (SwipeRight)
+        else if (SwipeRight && !inRoll)
         {
             if (m_Side == SIDE.Mid)
             {
                 NewXPos = XValue;
                 m_Side = SIDE.Right;
-                m_animator.Play("DodgeRight");
             }
             else if (m_Side == SIDE.Left)
             {
                 NewXPos = 0;
                 m_Side= SIDE.Mid;
-                m_animator.Play("DodgeRight");
             }
         }
+        Vector3 moveVector = new Vector3(x - transform.position.x, y * Time.deltaTime, fwdSpeed * Time.deltaTime);
         x = Mathf.Lerp(x, NewXPos, Time.deltaTime * speedDodge);
-        m_char.Move((x-transform.position.x) * Vector3.right);
+        m_char.Move(moveVector);
+        Jump();
+        Roll();
+    }
+    public void Jump()
+    {
+        if (m_char.isGrounded)
+        {
+            if (SwipeUp)
+            {
+                y = JumpPower;
+                m_animator.CrossFadeInFixedTime("Jump", 0.1f);
+                inJump = true;
+            }
+        }
+        else
+        {
+            y -= JumpPower * 2 * Time.deltaTime;
+        }
+    }
+    internal float slideCounter;
+    public void Roll()
+    {
+        slideCounter -= Time.deltaTime;
+        if (slideCounter <= 0f)
+        {
+            slideCounter = 0f;
+            m_char.center = new Vector3(0, colCenterY, 0);
+            m_char.height = colHeight;
+            inRoll = false;
+        }
+        if (SwipeDown)
+        {
+            slideCounter = 0.2f;
+            m_char.center = new Vector3(0, colCenterY / 2f, 0);
+            m_char.height = colHeight/2f;
+            m_animator.CrossFadeInFixedTime("Roll", 0.1f);
+            inRoll = true;
+            inJump = false;
+        }
     }
 }
 
