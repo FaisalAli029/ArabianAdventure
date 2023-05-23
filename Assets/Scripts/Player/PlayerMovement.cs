@@ -23,6 +23,11 @@ public class PlayerMovement : MonoBehaviour
     private float colHeight;
     private float colCenterY;
 
+    public PlayerMovement()
+    {
+        
+    }
+
     void Start()
     {
         m_char = GetComponent<CharacterController>();
