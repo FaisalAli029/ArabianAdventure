@@ -107,7 +107,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (SwipeDown)
         {
-            slideCounter = 0.2f;
+            slideCounter = 0.5f;
             m_char.center = new Vector3(0, colCenterY / 2f, 0);
             m_char.height = colHeight/2f;
             m_animator.CrossFadeInFixedTime("Roll", 0.1f);

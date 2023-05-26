@@ -1,30 +1,52 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class GenerateLevel : MonoBehaviour
 {
-    public GameObject[] section;
-    public int zPos = 10;
-    public bool creatingSection = false;
-    public int secNum;
+    public GameObject[] sectionPrefabs; // An array of prefabs for the map sections
+    public float sectionLength = 25f; // The length of each map section
+    public float generateDistance = 25f; // The distance ahead of the player at which new sections should be generated
+    public GenerateObstecales obstacleSpawner; // A reference to the obstacle spawner component
 
-    // Update is called once per frame
-    void Update()
+    private Transform playerTransform; // Reference to the player's transform
+    private List<GameObject> sections = new List<GameObject>(); // A list of the generated map sections
+
+    private void Start()
     {
-        if (creatingSection == false)
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        obstacleSpawner = GetComponentInChildren<GenerateObstecales>();
+        GenerateSection();
+    }
+
+    private void Update()
+    {
+        if (playerTransform.position.z > generateDistance - (sections.Count * sectionLength))
         {
-            creatingSection = true;
-            StartCoroutine(GenerateSection());
+            GenerateSection();
         }
     }
 
-    IEnumerator GenerateSection()
+    private void GenerateSection()
     {
-        secNum = Random.Range(0, 3);
-        Instantiate(section[secNum], new Vector3(0,0,zPos), Quaternion.identity);
-        zPos += 10;
-        yield return new WaitForSeconds(1);
-        creatingSection = false;
+        int index = Random.Range(0, sectionPrefabs.Length);
+        Vector3 position = Vector3.forward * (sections.Count * sectionLength);
+        GameObject sectionObject = Instantiate(sectionPrefabs[index], position, Quaternion.identity);
+        sections.Add(sectionObject);
+
+        // Find the spawn points in theinstantiated section prefab
+        List<Transform> spawnPoints = new List<Transform>();
+        Transform[] childTransforms = sectionObject.GetComponentsInChildren<Transform>();
+        foreach (Transform child in childTransforms)
+        {
+            if (child != sectionObject.transform && child.tag == "SpawnPoint")
+            {
+                spawnPoints.Add(child);
+            }
+        }
+
+        // Spawn obstacles randomly using the ObstacleSpawner script
+        obstacleSpawner.SpawnObstaclesRandomly(spawnPoints.ToArray());
     }
 }
