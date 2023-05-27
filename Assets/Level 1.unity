@@ -875,4 +875,5 @@ MonoBehaviour:
   - {fileID: 1497184072189023208, guid: 30029f642fa5cc54a803f9ebce2ec766, type: 3}
   - {fileID: 8169911292784352243, guid: 113e7f395a0b80543aa41c82768507b2, type: 3}
   - {fileID: 4666885350418758700, guid: 695a4b22bfcfffa408b67d4e0a392673, type: 3}
+  - {fileID: 5395993275001486523, guid: ee6f42e849ede2c4d8a5635f69137fb6, type: 3}
   spawnChance: 0.5
