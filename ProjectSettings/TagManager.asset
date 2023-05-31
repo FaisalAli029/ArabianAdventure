@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Ground
   - SpawnPoint
+  - Obstacle
+  - PowerUp1
+  - PowerUp2
+  - PowerUp3
+  - PowerUp4
   layers:
   - Default
   - TransparentFX

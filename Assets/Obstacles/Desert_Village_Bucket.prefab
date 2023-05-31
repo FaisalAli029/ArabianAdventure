@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6662176578068918407}
   m_Layer: 0
   m_Name: Desert_Village_Bucket
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -94,7 +94,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 377291983207010727}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 3.3130052, y: 2.7482753, z: 3.3130045}

@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 8991706193158336781}
   m_Layer: 0
   m_Name: Dryer
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -110,8 +110,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4272915777327984173}
   m_LocalRotation: {x: 0.0000000754979, y: 1, z: 3.2388859e-15, w: -0.00000004371139}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: -0.070142806, y: -0.070142806, z: -0.070142806}
+  m_LocalPosition: {x: 0, y: 1.302, z: -0}
+  m_LocalScale: {x: -0.13764122, y: -0.08745404, z: -0.070142806}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 295200153333507336}
@@ -177,7 +177,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4272915777327984173}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 22.310217, y: 11.382072, z: 1.9999999}
@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 3504257289938422464}
   m_Layer: 0
   m_Name: Desert_Village_Dryer
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647

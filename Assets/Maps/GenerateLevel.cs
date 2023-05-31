@@ -5,26 +5,45 @@ using System.Linq;
 
 public class GenerateLevel : MonoBehaviour
 {
-    public GameObject[] sectionPrefabs; // An array of prefabs for the map sections
-    public float sectionLength = 25f; // The length of each map section
-    public float generateDistance = 25f; // The distance ahead of the player at which new sections should be generated
-    public GenerateObstecales obstacleSpawner; // A reference to the obstacle spawner component
+    [Header("Map Sections")]
+    [SerializeField] private GameObject[] sectionPrefabs;
+    [SerializeField] private float sectionLength = 25f;
 
-    private Transform playerTransform; // Reference to the player's transform
-    private List<GameObject> sections = new List<GameObject>(); // A list of the generated map sections
+    [Header("Obstacles")]
+    [SerializeField] private GenerateObstecales obstacleSpawner;
+
+    [Header("Generation Settings")]
+    [SerializeField] private int numSectionsToPreload = 50;
+    [SerializeField] private int sectionsToGenerate = 50;
+
+    private Transform playerTransform;
+    private List<GameObject> sections;
+    private int sectionsGenerated;
 
     private void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         obstacleSpawner = GetComponentInChildren<GenerateObstecales>();
-        GenerateSection();
+        sections = new List<GameObject>();
+
+        for (int i = 0; i < numSectionsToPreload; i++)
+        {
+            GenerateSection();
+            sectionsGenerated++;
+        }
     }
 
     private void Update()
     {
-        if (playerTransform.position.z > generateDistance - (sections.Count * sectionLength))
+        int currentSection = Mathf.FloorToInt(playerTransform.position.z / sectionLength);
+
+        if (currentSection > sectionsGenerated - numSectionsToPreload)
         {
-            GenerateSection();
+            for (int i = 0; i < sectionsToGenerate; i++)
+            {
+                GenerateSection();
+                sectionsGenerated++;
+            }
         }
     }
 
@@ -35,18 +54,18 @@ public class GenerateLevel : MonoBehaviour
         GameObject sectionObject = Instantiate(sectionPrefabs[index], position, Quaternion.identity);
         sections.Add(sectionObject);
 
-        // Find the spawn points in theinstantiated section prefab
+        // Find the spawn points in the instantiated section prefab
         List<Transform> spawnPoints = new List<Transform>();
         Transform[] childTransforms = sectionObject.GetComponentsInChildren<Transform>();
         foreach (Transform child in childTransforms)
         {
-            if (child != sectionObject.transform && child.tag == "SpawnPoint")
+            if (child != sectionObject.transform && child.CompareTag("SpawnPoint"))
             {
                 spawnPoints.Add(child);
             }
         }
 
         // Spawn obstacles randomly using the ObstacleSpawner script
-        obstacleSpawner.SpawnObstaclesRandomly(spawnPoints.ToArray());
+        obstacleSpawner.SpawnObstaclesAndPowerUpsRandomly(spawnPoints.ToArray());
     }
 }

@@ -840,6 +840,8 @@ MonoBehaviour:
   sectionLength: 25
   generateDistance: 25
   obstacleSpawner: {fileID: 0}
+  numSectionsToPreload: 50
+  sectionsToGenerate: 50
 --- !u!4 &1908913308
 Transform:
   m_ObjectHideFlags: 0
@@ -873,7 +875,12 @@ MonoBehaviour:
   - {fileID: 377291983207010727, guid: 5e22c709abb2c1d45ad476ea4b03de35, type: 3}
   - {fileID: 4317351002369560698, guid: 9c2a2d2b74e6f124a968dc5c9089af1d, type: 3}
   - {fileID: 1497184072189023208, guid: 30029f642fa5cc54a803f9ebce2ec766, type: 3}
-  - {fileID: 8169911292784352243, guid: 113e7f395a0b80543aa41c82768507b2, type: 3}
   - {fileID: 4666885350418758700, guid: 695a4b22bfcfffa408b67d4e0a392673, type: 3}
   - {fileID: 5395993275001486523, guid: ee6f42e849ede2c4d8a5635f69137fb6, type: 3}
-  spawnChance: 0.5
+  powerUpPrefabs:
+  - {fileID: 7123802317580747316, guid: 903caac677315b24f9011fe45f830ad0, type: 3}
+  - {fileID: 6409067658458359975, guid: 41e6f0dc5e97fe440a26a72f54537c79, type: 3}
+  - {fileID: 3511452704009227505, guid: 38524581d10380840b34e450dd6ef631, type: 3}
+  - {fileID: 210928848016636530, guid: a3a08dfd186a66a448fb5491b0c119ab, type: 3}
+  obstacleSpawnChance: 0.5
+  powerUpSpawnChance: 0.03
