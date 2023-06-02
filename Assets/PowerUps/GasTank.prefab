@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5137527231114513996}
   m_Layer: 0
   m_Name: GasTank
-  m_TagString: PowerUp1
+  m_TagString: PowerUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,6 +110,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59810b4c81bde994dad1b63d4863489d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerUpType: 0
   duration: 10
-  obstacleTag: Obstacle
-  player: {fileID: 100000, guid: 2db7e17401e08b94697ecd7acce75ab1, type: 3}
+  hasPowerUp: 0

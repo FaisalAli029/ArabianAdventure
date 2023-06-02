@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3724626521531576704}
   - component: {fileID: 1464935827132089674}
   - component: {fileID: 762832871763481391}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Desert_Village_Bench (1) 1
   m_TagString: Obstacle
   m_Icon: {fileID: 0}

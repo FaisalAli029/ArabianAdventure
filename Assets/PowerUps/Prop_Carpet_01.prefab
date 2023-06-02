@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7401448309384677349}
   m_Layer: 0
   m_Name: Prop_Carpet_01
-  m_TagString: PowerUp2
+  m_TagString: PowerUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,5 +111,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59810b4c81bde994dad1b63d4863489d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerUpType: 3
   duration: 10
-  obstacleTag: Obstacle
+  hasPowerUp: 0

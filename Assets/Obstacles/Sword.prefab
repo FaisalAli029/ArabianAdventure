@@ -44,6 +44,10 @@ PrefabInstance:
       value: Knife_01
       objectReference: {fileID: 0}
     - target: {fileID: 4666885350418758700, guid: 695a4b22bfcfffa408b67d4e0a392673, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4666885350418758700, guid: 695a4b22bfcfffa408b67d4e0a392673, type: 3}
       propertyPath: m_TagString
       value: Obstacle
       objectReference: {fileID: 0}

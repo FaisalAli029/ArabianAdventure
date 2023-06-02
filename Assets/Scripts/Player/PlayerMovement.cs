@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public float XValue;
     private CharacterController m_char;
     private Animator m_animator;
-    private PowerUp powerUp;
+    public PowerUp powerUp;
     private float x;
     public float speedDodge;
     public float JumpPower = 7f;
@@ -26,6 +26,12 @@ public class PlayerMovement : MonoBehaviour
     private bool isCollided = false;
     private float maxSpeed = 25f;
     private float speedIncreaseRate = 0.1f;
+    private PowerUp.PowerUpType currentPowerUp = PowerUp.PowerUpType.None;
+
+    public void SetCurrentPowerUp(PowerUp.PowerUpType powerUpType)
+    {
+        currentPowerUp = powerUpType;
+    }
 
     public PlayerMovement()
     {
@@ -38,7 +44,6 @@ public class PlayerMovement : MonoBehaviour
         colHeight = m_char.height;
         colCenterY = m_char.center.y;
         m_animator = GetComponent<Animator>();
-        powerUp = GetComponent<PowerUp>();
         transform.position = Vector3.zero;
     }
 
@@ -103,6 +108,15 @@ public class PlayerMovement : MonoBehaviour
                 inJump = true;
             }
         }
+        else if (powerUp != null && powerUp.hasPowerUp && currentPowerUp == PowerUp.PowerUpType.DoubleJump && !inJump)
+        {
+            if (SwipeUp)
+            {
+                y = JumpPower;
+                m_animator.CrossFadeInFixedTime("Jump", 0.1f);
+                inJump = true;
+            }
+        }
         else
         {
             y -= JumpPower * 2 * Time.deltaTime;
@@ -132,12 +146,18 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Obstacle")
+        if (other.gameObject.CompareTag("Obstacle"))
         {
-            isCollided = true;
-            m_animator.SetTrigger("Trip");
+            if (powerUp != null && powerUp.hasPowerUp && currentPowerUp == PowerUp.PowerUpType.DestroyObstacle)
+            {
+                Destroy(other.gameObject);
+            }
+            else
+            {
+                isCollided = true;
+                m_animator.SetTrigger("Trip");
+            }
         }
-        Debug.Log(other);
     }
 }
 

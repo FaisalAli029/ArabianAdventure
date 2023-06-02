@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 2832444961656351246}
   - component: {fileID: 7577062040122438693}
   - component: {fileID: 8991706193158336781}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Dryer
   m_TagString: Obstacle
   m_Icon: {fileID: 0}

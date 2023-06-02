@@ -100,6 +100,10 @@ PrefabInstance:
       value: Desert_Village_Bench (1)
       objectReference: {fileID: 0}
     - target: {fileID: 1104652049659471007, guid: ae3c14b96abd09d42a0616d9bf768053, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1104652049659471007, guid: ae3c14b96abd09d42a0616d9bf768053, type: 3}
       propertyPath: m_TagString
       value: Obstacle
       objectReference: {fileID: 0}
