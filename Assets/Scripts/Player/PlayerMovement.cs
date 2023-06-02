@@ -138,23 +138,6 @@ public class PlayerMovement : MonoBehaviour
             m_animator.SetTrigger("Trip");
         }
         Debug.Log(other);
-
-        if (other.CompareTag("PowerUp1"))
-        {
-            StartCoroutine(powerUp.ApplyPowerUp1());
-        }
-        else if (other.CompareTag("PowerUp2"))
-        {
-            StartCoroutine(powerUp.ApplyPowerUp2());
-        }
-        else if (other.CompareTag("PowerUp3"))
-        {
-            StartCoroutine(powerUp.ApplyPowerUp3());
-        }
-        else if (other.CompareTag("PowerUp4"))
-        {
-            StartCoroutine(powerUp.ApplyPowerUp4());
-        }
     }
 }
 

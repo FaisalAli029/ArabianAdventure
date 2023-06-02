@@ -7,6 +7,14 @@ public class PowerUp : MonoBehaviour
     public float duration = 10f; // The duration of the power-up effect
     public string obstacleTag = "Obstacle"; // The tag assigned to obstacle objects
 
+    public GameObject player;
+    private Collider[] obstacleColliders;
+
+    private void LateUpdate()
+    {
+        obstacleColliders = Physics.OverlapSphere(player.transform.position, 10f);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -38,12 +46,15 @@ public class PowerUp : MonoBehaviour
         Debug.Log("Power-up 1 activated");
 
         // Disable obstacle objects
-        Collider[] obstacleColliders = Physics.OverlapSphere(transform.position, 10f);
         foreach (Collider collider in obstacleColliders)
         {
             if (collider.CompareTag(obstacleTag))
             {
-                collider.gameObject.SetActive(false);
+                if (Physics.CheckSphere(collider.transform.position, 0.5f))
+                {
+                    Debug.Log("Sphere collided");
+                    collider.gameObject.SetActive(false);
+                }
             }
         }
 

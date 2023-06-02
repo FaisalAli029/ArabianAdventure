@@ -112,3 +112,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 10
   obstacleTag: Obstacle
+  player: {fileID: 100000, guid: 2db7e17401e08b94697ecd7acce75ab1, type: 3}
