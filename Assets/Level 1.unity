@@ -198,16 +198,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Side: 1
+  XValue: 5
+  speedDodge: 5
+  fwdSpeed: 7
+  maxSpeed: 25
+  speedIncreaseRate: 0.1
   SwipeLeft: 0
   SwipeRight: 0
   SwipeUp: 0
   SwipeDown: 0
-  XValue: 5
-  speedDodge: 5
   JumpPower: 10
   inJump: 0
   inRoll: 0
-  fwdSpeed: 7
 --- !u!4 &136949062 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3492451938208810295, guid: 80cc86b526b977e4f96bb1154e6fe486, type: 3}
@@ -869,14 +871,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstaclePrefabs:
-  - {fileID: 1104652049659471007, guid: ef5e999418ae1344493f017c8698d3ef, type: 3}
-  - {fileID: 1104652049659471007, guid: a9e96f08b315b8e4696eea5cd8c6f775, type: 3}
-  - {fileID: 377291983207010727, guid: 5e22c709abb2c1d45ad476ea4b03de35, type: 3}
-  - {fileID: 4317351002369560698, guid: 9c2a2d2b74e6f124a968dc5c9089af1d, type: 3}
-  - {fileID: 1497184072189023208, guid: 30029f642fa5cc54a803f9ebce2ec766, type: 3}
-  - {fileID: 4666885350418758700, guid: 695a4b22bfcfffa408b67d4e0a392673, type: 3}
   - {fileID: 5395993275001486523, guid: 7b8854b2690452d42a0b813e8a9502b8, type: 3}
   powerUpPrefabs:
-  - {fileID: 7123802317580747316, guid: 903caac677315b24f9011fe45f830ad0, type: 3}
+  - {fileID: 210928848016636530, guid: a3a08dfd186a66a448fb5491b0c119ab, type: 3}
   obstacleSpawnChance: 0.5
   powerUpSpawnChance: 0.5

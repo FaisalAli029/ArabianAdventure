@@ -12,7 +12,7 @@ TagManager:
   - PowerUp2
   - PowerUp4
   - PowerUp3
-  - Destroy
+  - Coin
   layers:
   - Default
   - TransparentFX

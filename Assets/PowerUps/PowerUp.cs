@@ -14,36 +14,50 @@ public class PowerUp : MonoBehaviour
     }
 
     public PowerUpType powerUpType;
-    public float duration = 3.0f; // duration in seconds
-    public bool hasPowerUp = false;
+    public float duration = 10f; // duration in seconds
 
-    private IEnumerator DisablePowerUpAfterDuration()
-    {
-        Debug.Log("Power-Up disbaled");
+    private float remainingDuration = 0f;
 
-        yield return new WaitForSeconds(duration);
+    private bool isPowerUpActicated = false;
 
-        // Disable power-up effect after duration has elapsed
-        hasPowerUp = false;
-    }
+    private GameObject playerObject; // reference to the player object
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && !isPowerUpActicated)
         {
-            hasPowerUp = true;
-
-            other.gameObject.GetComponent<PlayerMovement>().powerUp = this;
+            playerObject = other.gameObject;
 
             // Pass power-up type to PlayerMovement script
-            other.gameObject.GetComponent<PlayerMovement>().SetCurrentPowerUp(powerUpType);
+            playerObject.GetComponent<PlayerMovement>().SetCurrentPowerUp(powerUpType, true);
 
-            // Set duration of the power-up
-            StartCoroutine(DisablePowerUpAfterDuration());
+            // Set remaining duration of the power-up
+            remainingDuration = duration;
 
             Debug.Log("Power-up collected");
 
-            this.gameObject.SetActive(false);
+            isPowerUpActicated = true;
+
+            this.gameObject.GetComponent<MeshRenderer>().enabled = false;
+        }
+    }
+    private void Update()
+    {
+        // Debug.Log(remainingDuration);
+
+        if (playerObject != null && remainingDuration > 0)
+        {
+
+            remainingDuration -= Time.deltaTime;
+
+            // Check if the power-up effect should be disabled
+            if (remainingDuration <= 0)
+            {
+                // Disable power-up effect
+                playerObject.GetComponent<PlayerMovement>().SetCurrentPowerUp(PowerUpType.None, false);
+
+                Debug.Log("Power Up disabled");
+            }
         }
     }
 }
