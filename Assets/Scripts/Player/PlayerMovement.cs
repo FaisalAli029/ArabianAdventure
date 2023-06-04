@@ -66,9 +66,18 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
+        // Check if the player picked up the magnet power up
         if (hasPowerUp && currentPowerUp == PowerUp.PowerUpType.Magnet)
         {
             MagnetCoins(10f); // Attract coins within a radius of 5 units
+        }
+
+        // Check if the player picked up the speed power up
+        if (hasPowerUp && currentPowerUp == PowerUp.PowerUpType.Speed)
+        {
+            // Move the player character forward at an increased pass
+            Vector3 speedVector = new Vector3(x - transform.position.x, y * Time.deltaTime, fwdSpeed * Time.deltaTime * 2);
+            m_char.Move(speedVector);
         }
 
         // Check for input from the player
@@ -185,7 +194,7 @@ public class PlayerMovement : MonoBehaviour
         // Create a box collider trigger to detect coins within a certain range
         BoxCollider triggerCollider = gameObject.AddComponent<BoxCollider>();
         triggerCollider.isTrigger = true;
-        triggerCollider.size = new Vector3(range * 2f, 1, range * 2f);
+        triggerCollider.size = new Vector3(range * 2f, range * 2f, range * 2f);
 
         // Find all the coins in the trigger collider
         Collider[] hitColliders = Physics.OverlapBox(transform.position, triggerCollider.size / 2f);

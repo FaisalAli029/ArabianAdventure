@@ -9,7 +9,7 @@ public class PowerUp : MonoBehaviour
         DestroyObstacle,
         DoubleJump,
         Magnet,
-        Flying,
+        Speed,
         None
     }
 

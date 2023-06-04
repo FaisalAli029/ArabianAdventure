@@ -871,8 +871,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstaclePrefabs:
+  - {fileID: 1104652049659471007, guid: ef5e999418ae1344493f017c8698d3ef, type: 3}
+  - {fileID: 1104652049659471007, guid: 785657acb98f5f34085ec040163f0a95, type: 3}
+  - {fileID: 4317351002369560698, guid: 9c2a2d2b74e6f124a968dc5c9089af1d, type: 3}
+  - {fileID: 1497184072189023208, guid: 30029f642fa5cc54a803f9ebce2ec766, type: 3}
+  - {fileID: 1104652049659471007, guid: a9e96f08b315b8e4696eea5cd8c6f775, type: 3}
+  - {fileID: 4666885350418758700, guid: 3154c4cb53ca2b14e97a34a84ffbafba, type: 3}
   - {fileID: 5395993275001486523, guid: 7b8854b2690452d42a0b813e8a9502b8, type: 3}
   powerUpPrefabs:
-  - {fileID: 210928848016636530, guid: a3a08dfd186a66a448fb5491b0c119ab, type: 3}
+  - {fileID: 6409067658458359975, guid: 41e6f0dc5e97fe440a26a72f54537c79, type: 3}
   obstacleSpawnChance: 0.5
   powerUpSpawnChance: 0.5
