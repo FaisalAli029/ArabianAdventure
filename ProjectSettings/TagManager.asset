@@ -13,6 +13,7 @@ TagManager:
   - PowerUp4
   - PowerUp3
   - Coin
+  - UpgradeCount
   layers:
   - Default
   - TransparentFX

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem.Controls;
 using UnityEngine.UI;
+using TMPro;
 
 public class PowerupButton : MonoBehaviour
 {
@@ -10,9 +11,10 @@ public class PowerupButton : MonoBehaviour
     public PowerUp powerUp;
     public float durationIncrease = 5f;
     public int upgradeCost = 10;
-
     private Button button;
     private int upgradeCount = 0;
+
+    public TextMeshProUGUI upgradeCountText;
 
     private void Start()
     {
@@ -27,6 +29,9 @@ public class PowerupButton : MonoBehaviour
         {
             upgradeCount = PlayerPrefs.GetInt(powerUpType.ToString() + "UpgradeCount");
         }
+
+        // Update the updateCountText
+        upgradeCountText.text = "Upgrades Left: " + (5 - upgradeCount);
     }
 
     private void OnDestroy()
