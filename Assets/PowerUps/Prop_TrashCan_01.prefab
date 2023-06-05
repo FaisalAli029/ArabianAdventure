@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4309519623357238484}
   m_Layer: 0
   m_Name: Prop_TrashCan_01
-  m_TagString: PowerUp
+  m_TagString: PowerUp4
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,6 +111,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59810b4c81bde994dad1b63d4863489d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUpType: 2
-  duration: 10
-  hasPowerUp: 0

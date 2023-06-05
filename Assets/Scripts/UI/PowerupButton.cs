@@ -10,7 +10,6 @@ public class PowerupButton : MonoBehaviour
     public PowerUp powerUp;
     public float durationIncrease = 5f;
     public int upgradeCost = 10;
-    public CoinManager coinManager = CoinManager.Instance;
 
     private Button button;
     private int upgradeCount = 0;
@@ -23,8 +22,11 @@ public class PowerupButton : MonoBehaviour
         // Add a listener to the button click event
         button.onClick.AddListener(OnButtonClick);
 
-        // Don't destroy this object when a new scene is loaded
-        DontDestroyOnLoad(gameObject);
+        // Load the upgrade count for this power-up from PlayerPrefs
+        if (PlayerPrefs.HasKey(powerUpType.ToString() + "UpgradeCount"))
+        {
+            upgradeCount = PlayerPrefs.GetInt(powerUpType.ToString() + "UpgradeCount");
+        }
     }
 
     private void OnDestroy()
@@ -36,12 +38,16 @@ public class PowerupButton : MonoBehaviour
     private void OnButtonClick()
     {
         // Check if the player has enough coins to purchase an upgrade and hasn't reached the upgrade limit
-        if (coinManager.coins >= upgradeCost && upgradeCount < 5)
+        if (CoinManager.Instance.coins >= upgradeCost && upgradeCount < 5)
         {
             // Deduct coins, increase the duration of the power-up and increment the upgrade count
-            coinManager.coins -= upgradeCost;
-            powerUp.durations[powerUpType] += durationIncrease;
+            CoinManager.Instance.DeductCoins(upgradeCost);
+            powerUp.UpgradeDuration(durationIncrease);
             upgradeCount++;
+
+            // Save the upgrade count for this power-up to PlayerPrefs
+            PlayerPrefs.SetInt(powerUpType.ToString() + "UpgradeCount", upgradeCount);
+            PlayerPrefs.Save();
 
             Debug.Log("Duration for " + powerUpType.ToString() + " power-up changed to " + powerUp.durations[powerUpType].ToString() + " seconds. Upgrade count: " + upgradeCount.ToString());
         }
@@ -52,25 +58,6 @@ public class PowerupButton : MonoBehaviour
         else
         {
             Debug.Log("Not enough coins to purchase an upgrade!");
-        }
-    }
-
-    private void Update()
-    {
-        // Check if this object is in a different scene than the power-up
-        if (gameObject.scene.name != powerUp.gameObject.scene.name)
-        {
-            // If it is, find the corresponding power-up object in the current scene
-            var powerUpObjects = FindObjectsOfType<PowerUp>();
-            foreach (var powerUpObject in powerUpObjects)
-            {
-                if (powerUpObject.powerUpType == powerUpType)
-                {
-                    // Update the power-up reference
-                    powerUp = powerUpObject;
-                    break;
-                }
-            }
         }
     }
 }

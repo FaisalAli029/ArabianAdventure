@@ -1,10 +1,11 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ScoreController : MonoBehaviour
 {
-    public Text scoreText;
-    public Text coinText;
+    public TextMeshPro scoreText;
+    public TextMeshPro coinText;
     private int score;
 
     void Start()

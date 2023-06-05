@@ -1,35 +1,77 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class CoinManager : MonoBehaviour
 {
+    private static CoinManager instance;
+
+    public static CoinManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<CoinManager>();
+                if (instance == null)
+                {
+                    Debug.LogError("No CoinManager instance found in the scene.");
+                }
+            }
+            return instance;
+        }
+    }
+
     public int coins = 0;
 
-    // Static instance of the CoinManager
-    public static CoinManager Instance { get; private set; }
+    private void Start()
+    {
+        // Load the player's coin balance from PlayerPrefs
+        if (PlayerPrefs.HasKey("Coins"))
+        {
+            coins = PlayerPrefs.GetInt("Coins");
+        }
+
+        // Update the coin text
+        //UpdateCoinText();
+    }
+
+    public void AddCoins(int amount)
+    {
+        coins += amount;
+
+        // Update the coin text and save the new coin balance to PlayerPrefs
+        //UpdateCoinText();
+        PlayerPrefs.SetInt("Coins", coins);
+        PlayerPrefs.Save();
+    }
+
+    public void DeductCoins(int amount)
+    {
+        coins -= amount;
+
+        // Update the coin text and save the new coin balance to PlayerPrefs
+        //UpdateCoinText();
+        PlayerPrefs.SetInt("Coins", coins);
+        PlayerPrefs.Save();
+    }
+
+    private void UpdateCoinText()
+    {
+        //coinText.text = "Coins: " + coins.ToString();
+    }
 
     private void Awake()
     {
-        // Ensure that there is only one instance of the CoinManager
-        if (Instance == null)
+        if (instance == null)
         {
-            Instance = this;
+            instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
         }
-    }
-
-    public void AddCoins(int amount)
-    {
-        coins += amount;
-    }
-
-    public void DeductCoins(int amount)
-    {
-        coins -= amount;
     }
 }

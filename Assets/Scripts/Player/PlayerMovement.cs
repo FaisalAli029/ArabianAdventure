@@ -230,6 +230,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 // Trip the player character and set isCollided to true if they collide with an obstacle and don't have the destroy obstacle power-up
                 isCollided = true;
+                CoinManager.Instance.AddCoins(PlayerManager.numberOfCoins);
                 m_animator.SetTrigger("Trip");
             }
         }

@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 5585959085152554732}
   - component: {fileID: 7665592178129943078}
   - component: {fileID: 8352004218036086863}
-  - component: {fileID: 5137527231114513996}
+  - component: {fileID: 8530188056221187036}
   m_Layer: 0
   m_Name: GasTank
-  m_TagString: PowerUp
+  m_TagString: PowerUp1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,7 +98,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.23067714, y: 0.68287617, z: 0.52838016}
   m_Center: {x: 0, y: 0.34143808, z: 0.00019009411}
---- !u!114 &5137527231114513996
+--- !u!114 &8530188056221187036
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,6 +110,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59810b4c81bde994dad1b63d4863489d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUpType: 0
-  duration: 10
-  hasPowerUp: 0
