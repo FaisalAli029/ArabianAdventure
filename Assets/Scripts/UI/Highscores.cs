@@ -14,10 +14,10 @@ public class Highscores : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        desertHighScore.text = ScoreController.Instance.GetHighestScoreWithString("Level 1").ToString();
-        trackHighScore.text = ScoreController.Instance.GetHighestScoreWithString("Level 2").ToString();
-        marketHighScore.text = ScoreController.Instance.GetHighestScoreWithString("Level 3").ToString();
-        villageHighScore.text = ScoreController.Instance.GetHighestScoreWithString("Level 4").ToString();
+        desertHighScore.text = gameObject.GetComponent<ScoreController>().GetHighestScoreWithString("Level 1").ToString();
+        trackHighScore.text = gameObject.GetComponent<ScoreController>().GetHighestScoreWithString("Level 2").ToString();
+        marketHighScore.text = gameObject.GetComponent<ScoreController>().GetHighestScoreWithString("Level 3").ToString();
+        villageHighScore.text = gameObject.GetComponent<ScoreController>().GetHighestScoreWithString("Level 4").ToString();
     }
 
 }

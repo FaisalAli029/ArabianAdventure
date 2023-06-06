@@ -46,6 +46,9 @@ public class PlayerMovement : MonoBehaviour
         this.hasPowerUp = hasPowerUp;
     }
 
+    private CoinManager coinManager;
+    private ScoreController scoreController;
+
     // Initialize variables
     void Start()
     {
@@ -55,6 +58,8 @@ public class PlayerMovement : MonoBehaviour
         m_animator = GetComponent<Animator>();
         transform.position = Vector3.zero;
         deathScreen.SetActive(false);
+        coinManager = FindAnyObjectByType<CoinManager>();
+        scoreController = FindAnyObjectByType<ScoreController>();
     }
 
     // Display the death screen
@@ -242,8 +247,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 // Trip the player character and set isCollided to true if they collide with an obstacle and don't have the destroy obstacle power-up
                 isCollided = true;
-                CoinManager.Instance.AddCoins(PlayerManager.numberOfCoins);
-                ScoreController.Instance.SetScoreEnabled(false);
+                coinManager.AddCoins(PlayerManager.numberOfCoins);
+                scoreController.SetScoreEnabled(false);
                 m_animator.SetTrigger("Trip");
             }
         }

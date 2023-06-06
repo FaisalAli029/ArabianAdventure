@@ -405,6 +405,85 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 314224107}
   m_CullTransparentMesh: 1
+--- !u!1 &583531305
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 583531308}
+  - component: {fileID: 583531307}
+  - component: {fileID: 583531306}
+  - component: {fileID: 583531309}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &583531306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583531305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9540935e7fe2ab4a8270451206c9b4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 1863409307271085329, guid: 8894823d15f3b4841824d11b53c5f943, type: 3}
+  coinText: {fileID: 6497639647965659768, guid: 0f8edda210e9a8742901088d8e978221, type: 3}
+  isScoreEnabled: 1
+--- !u!114 &583531307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583531305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09bd0facd70845e4b9ad18a6af8d233d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinText: {fileID: 3645246984637282144, guid: ccec7a6daf669d6449ac2aff4570da33, type: 3}
+  coins: 0
+--- !u!4 &583531308
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583531305}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 475.5, y: 267.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &583531309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583531305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62eda4b958e505b409aae9c54452feeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  desertHighScore: {fileID: 3547530904794145408, guid: 68463c22573d2054b8c4eb00d79404dc, type: 3}
+  trackHighScore: {fileID: 2970035691131904928, guid: d54ef68d16ebcbf4eb8965281dfe856d, type: 3}
+  marketHighScore: {fileID: 994359568225861218, guid: dac6ac77eacbd514a8b79a1898e541b6, type: 3}
+  villageHighScore: {fileID: 2370405294430272290, guid: 983a12feb0e9b754490087122ccc555e, type: 3}
 --- !u!1 &651747549
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,86 +551,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &715268093
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 715268097}
-  - component: {fileID: 715268096}
-  - component: {fileID: 715268095}
-  - component: {fileID: 715268094}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &715268094
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 715268093}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddb592392f82b6b468731fe5d4e5bec5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpSound: {fileID: 8300000, guid: cffd1cbae457a334db618f6845ac7b8c, type: 3}
-  coinSound: {fileID: 8300000, guid: 72b716e80d4340c439b46b89d1b510e4, type: 3}
-  gameOverSound: {fileID: 8300000, guid: 29e8968838ac57844a8121f085930d02, type: 3}
-  powerupSound: {fileID: 8300000, guid: cdb6cfe94d9d4e84db11fe751d24464b, type: 3}
-  powerDownSound: {fileID: 8300000, guid: e0adffab06294b647866954f9029a295, type: 3}
---- !u!114 &715268095
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 715268093}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09bd0facd70845e4b9ad18a6af8d233d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coinText: {fileID: 3645246984637282144, guid: ccec7a6daf669d6449ac2aff4570da33, type: 3}
-  coins: 0
---- !u!114 &715268096
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 715268093}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9540935e7fe2ab4a8270451206c9b4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreText: {fileID: 1863409307271085329, guid: 8894823d15f3b4841824d11b53c5f943, type: 3}
-  coinText: {fileID: 6497639647965659768, guid: 0f8edda210e9a8742901088d8e978221, type: 3}
-  isScoreEnabled: 1
---- !u!4 &715268097
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 715268093}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 90}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &796072975
 GameObject:

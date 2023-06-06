@@ -5,25 +5,7 @@ using UnityEngine;
 
 public class CoinManager : MonoBehaviour
 {
-    private static CoinManager instance;
-
     public TextMeshProUGUI coinText;
-
-    public static CoinManager Instance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                instance = FindObjectOfType<CoinManager>();
-                if (instance == null)
-                {
-                    Debug.LogError("No CoinManager instance found in the scene.");
-                }
-            }
-            return instance;
-        }
-    }
 
     public int coins;
 
@@ -35,8 +17,11 @@ public class CoinManager : MonoBehaviour
             coins = PlayerPrefs.GetInt("Coins");
         }
 
-        // Update the coin text
-        UpdateCoinText();
+        if (coinText != null)
+        {
+            // Update the coin text
+            UpdateCoinText();
+        }
     }
 
     public void AddCoins(int amount)
@@ -57,21 +42,8 @@ public class CoinManager : MonoBehaviour
         PlayerPrefs.Save();
     }
 
-    private void UpdateCoinText()
+    public void UpdateCoinText()
     {
         coinText.text = "Total Coins: " + PlayerPrefs.GetInt("Coins");
-    }
-
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
     }
 }

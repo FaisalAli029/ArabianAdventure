@@ -27,13 +27,10 @@ public class PowerUp : MonoBehaviour
         // Set default durations for all power-ups if they haven't been set yet
         foreach (PowerUpType powerUpType in Enum.GetValues(typeof(PowerUpType)))
         {
-            if (PlayerPrefs.HasKey(powerUpType.ToString()))
+            if (!PlayerPrefs.HasKey(powerUpType.ToString()))
             {
-                if (PlayerPrefs.GetFloat(powerUpType.ToString()) < 10.0f)
-                {
-                    PlayerPrefs.SetFloat(powerUpType.ToString(), 10.0f);
-                    PlayerPrefs.Save();
-                }
+                PlayerPrefs.SetFloat(powerUpType.ToString(), 10.0f);
+                PlayerPrefs.Save();
             }
             durations[powerUpType] = PlayerPrefs.GetFloat(powerUpType.ToString());
         }

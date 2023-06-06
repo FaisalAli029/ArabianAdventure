@@ -15,11 +15,16 @@ public class PowerupButton : MonoBehaviour
     private int upgradeCount = 0;
 
     public TextMeshProUGUI upgradeCountText;
+    public TextMeshProUGUI messageText;
+
+    private CoinManager coinManager;
 
     private void Start()
     {
         // Get a reference to the button component
         button = GetComponent<Button>();
+
+        coinManager = FindAnyObjectByType<CoinManager>();
 
         // Add a listener to the button click event
         button.onClick.AddListener(OnButtonClick);
@@ -43,10 +48,11 @@ public class PowerupButton : MonoBehaviour
     private void OnButtonClick()
     {
         // Check if the player has enough coins to purchase an upgrade and hasn't reached the upgrade limit
-        if (CoinManager.Instance.coins >= upgradeCost && upgradeCount < 5)
+        if (coinManager.coins >= upgradeCost && upgradeCount < 5)
         {
             // Deduct coins, increase the duration of the power-up and increment the upgrade count
-            CoinManager.Instance.DeductCoins(upgradeCost);
+            coinManager.DeductCoins(upgradeCost);
+            coinManager.UpdateCoinText();
             powerUp.UpgradeDuration(durationIncrease);
             upgradeCount++;
 
@@ -54,15 +60,27 @@ public class PowerupButton : MonoBehaviour
             PlayerPrefs.SetInt(powerUpType.ToString() + "UpgradeCount", upgradeCount);
             PlayerPrefs.Save();
 
-            Debug.Log("Duration for " + powerUpType.ToString() + " power-up changed to " + powerUp.durations[powerUpType].ToString() + " seconds. Upgrade count: " + upgradeCount.ToString());
+            // Update the updateCountText
+            upgradeCountText.text = "Upgrades Left: " + (5 - upgradeCount);
+
+            if (messageText != null)
+            {
+                messageText.text = "Duration for " + powerUpType.ToString() + " power-up changed to " + powerUp.durations[powerUpType].ToString() + " seconds. Upgrade count: " + upgradeCount.ToString();
+            }
         }
         else if (upgradeCount >= 5)
         {
-            Debug.Log("Upgrade limit reached for " + powerUpType.ToString() + " power-up!");
+            if (messageText != null)
+            {
+                messageText.text = "Upgrade limit reached for " + powerUpType.ToString() + " power-up!";
+            }
         }
         else
         {
-            Debug.Log("Not enough coins to purchase an upgrade!");
+            if (messageText != null)
+            {
+                messageText.text = "Not enough coins to purchase an upgrade!";
+            }
         }
     }
 }

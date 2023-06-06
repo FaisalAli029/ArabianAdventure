@@ -36,22 +36,18 @@ public class MainMenuController : MonoBehaviour
     public void LoadLevel1()
     {
         SceneManager.LoadScene("Level 1");
-        ScoreController.Instance.SetScoreEnabled(true);
     }
         public void LoadLevel2()
     {
-        SceneManager.LoadScene("Level 1");
-        ScoreController.Instance.SetScoreEnabled(true);
+        SceneManager.LoadScene("Level 2");
     }
         public void LoadLevel3()
     {
-        SceneManager.LoadScene("Level 1");
-        ScoreController.Instance.SetScoreEnabled(true);
+        SceneManager.LoadScene("Level 3");
     }
         public void LoadLevel4()
     {
-        SceneManager.LoadScene("Level 1");
-        ScoreController.Instance.SetScoreEnabled(true);
+        SceneManager.LoadScene("Level 4");
     }
 
     public void Reload()

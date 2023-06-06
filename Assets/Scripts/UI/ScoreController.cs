@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class ScoreController : MonoBehaviour
 {
-    public static ScoreController Instance { get; private set; }
-
     public TextMeshPro scoreText;
     public TextMeshPro coinText;
 
@@ -20,28 +18,15 @@ public class ScoreController : MonoBehaviour
 
     public bool isScoreEnabled = true; // Flag to enable/disable the score
 
-    void Awake()
+    void Start()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-
         levelIndex = SceneManager.GetActiveScene().name;
 
         highestScoreLevel1 = PlayerPrefs.GetInt("HighestScoreLevel1", 0);
         highestScoreLevel2 = PlayerPrefs.GetInt("HighestScoreLevel2", 0);
         highestScoreLevel3 = PlayerPrefs.GetInt("HighestScoreLevel3", 0);
         highestScoreLevel4 = PlayerPrefs.GetInt("HighestScoreLevel4", 0);
-    }
 
-    void Start()
-    {
         score = 0;
         InvokeRepeating("UpdateScore", 0f, 1f);
         InvokeRepeating("UpdateCoin", 0f, 1f);
@@ -49,21 +34,27 @@ public class ScoreController : MonoBehaviour
 
     void UpdateScore()
     {
-        if (isScoreEnabled)
+        if (scoreText != null)
         {
-            score++;
-            scoreText.text = "Score: " + score;
-
-            if (score > GetHighestScore())
+            if (isScoreEnabled)
             {
-                SetHighestScore(score);
+                score++;
+                scoreText.text = "Score: " + score;
+
+                if (score > GetHighestScore())
+                {
+                    SetHighestScore(score);
+                }
             }
         }
     }
 
     void UpdateCoin()
     {
-        coinText.text = "Coins: " + PlayerManager.numberOfCoins;
+        if (coinText != null)
+        {
+            coinText.text = "Coins: " + PlayerManager.numberOfCoins;
+        }
     }
 
     public int GetHighestScore()
