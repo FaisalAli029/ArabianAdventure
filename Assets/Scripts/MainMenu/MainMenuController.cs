@@ -21,7 +21,11 @@ public class MainMenuController : MonoBehaviour
     }
     public void GoBack()
     {
-        SceneManager.LoadScene("DisplayScreen");
+        SceneManager.LoadScene("MainMenu");
     }
 
+    public void Play()
+    {
+        SceneManager.LoadScene("Levels");
+    }
 }

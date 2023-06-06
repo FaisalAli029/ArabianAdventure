@@ -7,6 +7,8 @@ public class CoinManager : MonoBehaviour
 {
     private static CoinManager instance;
 
+    public TextMeshProUGUI coinText;
+
     public static CoinManager Instance
     {
         get
@@ -34,7 +36,7 @@ public class CoinManager : MonoBehaviour
         }
 
         // Update the coin text
-        //UpdateCoinText();
+        UpdateCoinText();
     }
 
     public void AddCoins(int amount)
@@ -52,14 +54,14 @@ public class CoinManager : MonoBehaviour
         coins -= amount;
 
         // Update the coin text and save the new coin balance to PlayerPrefs
-        //UpdateCoinText();
+        UpdateCoinText();
         PlayerPrefs.SetInt("Coins", coins);
         PlayerPrefs.Save();
     }
 
     private void UpdateCoinText()
     {
-        //coinText.text = "Coins: " + coins.ToString();
+        coinText.text = "Total Coins: " + coins.ToString();
     }
 
     private void Awake()

@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private float y;
     public float speedDodge;
     public float fwdSpeed = 7f;
-    public float maxSpeed = 25f;
+    public float maxSpeed = 14f;
     public float speedIncreaseRate = 0.1f;
     private bool isCollided = false;
 
