@@ -18,6 +18,8 @@ public class ScoreController : MonoBehaviour
     private int highestScoreLevel3;
     private int highestScoreLevel4;
 
+    public bool isScoreEnabled = true; // Flag to enable/disable the score
+
     void Awake()
     {
         if (Instance == null)
@@ -47,12 +49,15 @@ public class ScoreController : MonoBehaviour
 
     void UpdateScore()
     {
-        score++;
-        scoreText.text = "Score: " + score;
-
-        if (score > GetHighestScore())
+        if (isScoreEnabled)
         {
-            SetHighestScore(score);
+            score++;
+            scoreText.text = "Score: " + score;
+
+            if (score > GetHighestScore())
+            {
+                SetHighestScore(score);
+            }
         }
     }
 
@@ -122,5 +127,11 @@ public class ScoreController : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    // New method to enable/disable the score
+    public void SetScoreEnabled(bool enabled)
+    {
+        isScoreEnabled = enabled;
     }
 }

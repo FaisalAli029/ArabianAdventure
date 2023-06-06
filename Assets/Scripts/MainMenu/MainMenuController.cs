@@ -28,4 +28,34 @@ public class MainMenuController : MonoBehaviour
     {
         SceneManager.LoadScene("Levels");
     }
+
+    public void Controls()
+    {
+        SceneManager.LoadScene("ControlsUI");
+    }
+    public void LoadLevel1()
+    {
+        SceneManager.LoadScene("Level 1");
+        ScoreController.Instance.SetScoreEnabled(true);
+    }
+        public void LoadLevel2()
+    {
+        SceneManager.LoadScene("Level 1");
+        ScoreController.Instance.SetScoreEnabled(true);
+    }
+        public void LoadLevel3()
+    {
+        SceneManager.LoadScene("Level 1");
+        ScoreController.Instance.SetScoreEnabled(true);
+    }
+        public void LoadLevel4()
+    {
+        SceneManager.LoadScene("Level 1");
+        ScoreController.Instance.SetScoreEnabled(true);
+    }
+
+    public void Reload()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 }

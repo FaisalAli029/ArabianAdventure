@@ -25,7 +25,7 @@ public class CoinManager : MonoBehaviour
         }
     }
 
-    public int coins = 0;
+    public int coins;
 
     private void Start()
     {
@@ -44,7 +44,6 @@ public class CoinManager : MonoBehaviour
         coins += amount;
 
         // Update the coin text and save the new coin balance to PlayerPrefs
-        //UpdateCoinText();
         PlayerPrefs.SetInt("Coins", coins);
         PlayerPrefs.Save();
     }
@@ -54,14 +53,13 @@ public class CoinManager : MonoBehaviour
         coins -= amount;
 
         // Update the coin text and save the new coin balance to PlayerPrefs
-        UpdateCoinText();
         PlayerPrefs.SetInt("Coins", coins);
         PlayerPrefs.Save();
     }
 
     private void UpdateCoinText()
     {
-        coinText.text = "Total Coins: " + coins.ToString();
+        coinText.text = "Total Coins: " + PlayerPrefs.GetInt("Coins");
     }
 
     private void Awake()

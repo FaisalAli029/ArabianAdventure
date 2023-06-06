@@ -36,6 +36,9 @@ public class PlayerMovement : MonoBehaviour
     private PowerUp.PowerUpType currentPowerUp = PowerUp.PowerUpType.None;
     private bool hasPowerUp = false;
 
+    //UI
+    public GameObject deathScreen;
+
     // Set the current power-up and whether the player has the power-up
     public void SetCurrentPowerUp(PowerUp.PowerUpType powerUpType, bool hasPowerUp)
     {
@@ -51,6 +54,14 @@ public class PlayerMovement : MonoBehaviour
         colCenterY = m_char.center.y;
         m_animator = GetComponent<Animator>();
         transform.position = Vector3.zero;
+        deathScreen.SetActive(false);
+    }
+
+    // Display the death screen
+    private void ShowDeathScreen()
+    {
+        // Set the death screen to active
+        deathScreen.SetActive(true);
     }
 
     // Update is called once per frame
@@ -63,6 +74,7 @@ public class PlayerMovement : MonoBehaviour
         if (isCollided)
         {
             m_char.Move(new Vector3(0, -10f, 0) * Time.deltaTime);
+            ShowDeathScreen();
             return;
         }
 
@@ -231,6 +243,7 @@ public class PlayerMovement : MonoBehaviour
                 // Trip the player character and set isCollided to true if they collide with an obstacle and don't have the destroy obstacle power-up
                 isCollided = true;
                 CoinManager.Instance.AddCoins(PlayerManager.numberOfCoins);
+                ScoreController.Instance.SetScoreEnabled(false);
                 m_animator.SetTrigger("Trip");
             }
         }

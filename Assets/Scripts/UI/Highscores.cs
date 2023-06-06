@@ -6,10 +6,10 @@ using TMPro;
 
 public class Highscores : MonoBehaviour
 {
-    public TextMeshPro desertHighScore;
-    public TextMeshPro trackHighScore;
-    public TextMeshPro marketHighScore;
-    public TextMeshPro villageHighScore;
+    public TextMeshProUGUI desertHighScore;
+    public TextMeshProUGUI trackHighScore;
+    public TextMeshProUGUI marketHighScore;
+    public TextMeshProUGUI villageHighScore;
 
     // Start is called before the first frame update
     void Start()

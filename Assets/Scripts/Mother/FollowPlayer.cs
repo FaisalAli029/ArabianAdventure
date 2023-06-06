@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
 {
-    public Transform playerTransform; // Reference to the player's transform
+    private Transform playerTransform; // Reference to the player's transform
     public float distanceBehindPlayer = 5.0f; // Distance behind the player
     public float smoothTime = 0.3f; // Smoothing time for movement
     public float moveSpeed = 5.0f; // Movement speed
@@ -19,6 +19,7 @@ public class FollowPlayer : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         PM = player.GetComponent<PlayerMovement>();
+        playerTransform = player.transform;
     }
 
     void LateUpdate()
